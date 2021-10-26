@@ -1,9 +1,11 @@
-import React from 'react'
+import {React,useState} from 'react'
 import {Header} from '@bigbinary/neetoui/v2/layouts'
 import {Button, Tooltip} from '@bigbinary/neetoui/v2'
 import { Search, Notification, Filter} from '@bigbinary/neeto-icons'
+import SidePane from './SidePane'
 
 const Home = () => {
+    const [showFilter, setShowFilter] = useState(false);
     return (
         <div className="px-4 border-b">
                 <Header actionBlock={
@@ -27,11 +29,13 @@ const Home = () => {
                         label = "Filter"
                         style = "secondary"
                         size = "large"
+                        onClick={() => setShowFilter(!showFilter)}
                     />
                 </>
                 }
                 title={<div className="text-gray-500">Feed.ly</div>}
                 />
+                <SidePane showFilter={showFilter} setShowFilter={setShowFilter}/>
         </div>
     )
 }
