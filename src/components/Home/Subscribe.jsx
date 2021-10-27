@@ -1,6 +1,6 @@
 import {React} from "react";
 import {Button, Modal, Typography, Input} from '@bigbinary/neetoui/v2'
-import subscribe from '../../assests/subscribe.png'
+import subscribe from '../../resourses/subscribe.png'
 
 
 const Subscribe = ({showModal,setShowModal}) => {
