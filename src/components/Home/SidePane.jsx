@@ -1,10 +1,9 @@
 import { Pane,Button,Typography,Checkbox } from "@bigbinary/neetoui/v2";
 import {React} from 'react'
 import {Check} from '@bigbinary/neeto-icons'
-
+import { categories } from "../../constants";
 
 const SidePane = ({showFilter,setShowFilter}) => {
-    const categories = ['All','National','Business','Sports','World'];
   return (
     <div className="w-full">
       <Pane isOpen={showFilter} onClose={() => setShowFilter(false)}>
