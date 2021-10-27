@@ -22,7 +22,6 @@ const Home = () => {
                 const res = await feed(item.toLowerCase())
                 data[res.category] = await res.data;
                 setNewsFeed(data)
-                console.log(Object.keys(data).length,categories.length)
                 if(Object.keys(data).length === categories.length)
                     setLoading(false)
             })
