@@ -1,18 +1,41 @@
-import {React,useState} from 'react'
+import {React,useState,useEffect} from 'react'
 import {Header} from '@bigbinary/neetoui/v2/layouts'
 import {Button, Tooltip} from '@bigbinary/neetoui/v2'
 import { Search, Notification, Filter} from '@bigbinary/neeto-icons'
 import SidePane from './SidePane'
 import Sections from '../Sections'
 import Subscribe from './Subscribe'
+import { feed } from '../../apis/inshort'
+import { categories } from '../../constants'
 
 const Home = () => {
     const [showFilter, setShowFilter] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [newsFeed, setNewsFeed] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [filter, setFilter] = useState([]);
+
+    useEffect(() => {
+        const getFeed = (category) =>{
+            let data = {};
+            category.forEach(async (item)=>{
+                const res = await feed(item.toLowerCase())
+                data[res.category] = await res.data;
+                setNewsFeed(data)
+                console.log(Object.keys(data).length,categories.length)
+                if(Object.keys(data).length === categories.length)
+                    setLoading(false)
+            })
+        }
+        getFeed(categories)
+    }, [])
+
+
+    if(loading) return <h1>Loading</h1>
 
     return (
-        <div className="px-4 border-b">
-                <Header actionBlock={
+        <div className="mx-5" >
+                <Header className=" px-2 border-b" actionBlock={
                 <>
                     <Tooltip
                         content="Search"
@@ -42,6 +65,7 @@ const Home = () => {
                 />
                 <SidePane showFilter={showFilter} setShowFilter={setShowFilter}/>
                 <Subscribe showModal={showModal} setShowModal={setShowModal}/>
+                <Sections filter={filter} newsFeed={newsFeed}/>
         </div>
     )
 }

@@ -1,3 +1,3 @@
-const categories = ['All','National','Business','Sports','World'];
+const categories = ['All','Science','Business','National','Sports','World','Technology'];
 
 export {categories}
