@@ -4,7 +4,7 @@ import {Typography,Button} from "@bigbinary/neetoui/v2"
 const MainNews = ({data}) =>{
     return(
         <div className="py-5 flex flex-row justify-center border-b">
-            <img src={data.imageUrl} className="h-72 w-1/2" alt="news image"/>
+            <img src={data.imageUrl} className="h-72 w-1/2" alt="news"/>
             <div className="w-1/2 ml-5 flex flex-col justify-start items-start">
                 <Typography style="h3" className="leading-8 tracking-wide">{data.title}</Typography>
                 <div className="w-full flex flex-row justify-end neeto-ui-text-gray-500">

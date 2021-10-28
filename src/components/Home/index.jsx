@@ -62,7 +62,7 @@ const Home = () => {
                 }
                 title={<div className="text-gray-500">Feed.ly</div>}
                 />
-                <SidePane showFilter={showFilter} setShowFilter={setShowFilter}/>
+                <SidePane showFilter={showFilter} setShowFilter={setShowFilter} setFilter={setFilter}/>
                 <Subscribe showModal={showModal} setShowModal={setShowModal}/>
                 <Sections filter={filter} newsFeed={newsFeed}/>
         </div>
