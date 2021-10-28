@@ -6,6 +6,7 @@ import { feed } from './apis/inshort'
 import { categories,initialCategories } from './constants'
 import Sections from './components/Sections';
 import { PageLoader } from "@bigbinary/neetoui/v2";
+import ErrorPage from './components/ErrorPage';
 
 
 
@@ -56,6 +57,10 @@ if(loading)
         <Route path='/:category/:slug'>
             <Home category={category} setCategory={setCategory} setFilter={setFilter}/>
             <Article newsFeed={newsFeed}/>
+          </Route>
+          <Route path='/:slug'>
+            <Home category={category} setCategory={setCategory} setFilter={setFilter}/>
+            <ErrorPage />
           </Route>
           <Route path='/'>
             <Home category={category} setCategory={setCategory} setFilter={setFilter}/>

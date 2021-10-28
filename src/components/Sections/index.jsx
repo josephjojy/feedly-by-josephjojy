@@ -11,7 +11,7 @@ const Sections = ({category,setCategory,setFilter,filter,newsFeed}) => {
     if(filter.length){
         reqCategories = filter;
         return(
-        <div className="my-20 mx-48 h-full flex flex-col justify-center items-center">
+        <div className="my-10 mx-48 h-full flex flex-col justify-center items-center">
             <FilterLabel setCategory={setCategory} setFilter={setFilter} filter={filter}/>
             {
                 reqCategories.map((category,index)=>{
