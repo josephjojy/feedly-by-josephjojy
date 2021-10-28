@@ -3,14 +3,16 @@ import {Typography} from "@bigbinary/neetoui/v2"
 import MainNews from "./MainNews";
 import SubNews from "./SubNews";
 import NoNews from "./NoNews";
+import FilterLabel from "./FilterLabel";
 
-const Sections = ({filter,newsFeed}) => {
+const Sections = ({category,setCategory,setFilter,filter,newsFeed}) => {
     let reqCategories = [];
 
     if(filter.length){
         reqCategories = filter;
         return(
         <div className="my-20 mx-48 h-full flex flex-col justify-center items-center">
+            <FilterLabel setCategory={setCategory} setFilter={setFilter} filter={filter}/>
             {
                 reqCategories.map((category,index)=>{
                     const capitalizeTitle = category[0].toUpperCase()+category.slice(1)

@@ -13,13 +13,20 @@ function App() {
   const [newsFeed, setNewsFeed] = useState({});
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState(initialCategories);
+  const [category,setCategory] = useState({
+    "national":true,
+    "world":true,
+    "business":true,
+    "sports":true
+});
 
 
 
   useEffect(() => {
     const getFeed = (category) =>{
-        let count = 0;
+        let count = 1;
         let data = {};
+        try{
         category.forEach(async (item)=>{
             const res = await feed(item.toLowerCase())
             data[res.category] = await res.data;
@@ -27,7 +34,10 @@ function App() {
             count++;
             if(count === categories.length)
                 setLoading(false)
-        })
+        })}
+        catch(err){
+          setLoading(false)
+        }
     }
     getFeed(categories)
 }, [])
@@ -44,12 +54,12 @@ if(loading)
       <BrowserRouter>
         <Switch>
         <Route path='/:category/:slug'>
-            <Home setFilter={setFilter}/>
+            <Home category={category} setCategory={setCategory} setFilter={setFilter}/>
             <Article newsFeed={newsFeed}/>
           </Route>
           <Route path='/'>
-            <Home setFilter={setFilter}/>
-            <Sections filter={filter} newsFeed={newsFeed}/>
+            <Home category={category} setCategory={setCategory} setFilter={setFilter}/>
+            <Sections category={category} setCategory={setCategory} setFilter={setFilter} filter={filter} newsFeed={newsFeed}/>
           </Route>
         </Switch>
       </BrowserRouter>

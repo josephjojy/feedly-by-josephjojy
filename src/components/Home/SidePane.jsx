@@ -1,17 +1,12 @@
 import { Pane,Button,Typography,Checkbox } from "@bigbinary/neetoui/v2";
-import {React,useState} from 'react'
+import {React,useState,useEffect} from 'react'
 import {Check} from '@bigbinary/neeto-icons'
 import { categories } from "../../constants";
 import { Link } from "react-router-dom";
 
-const SidePane = ({showFilter,setShowFilter,setFilter}) => {
+const SidePane = ({category,setCategory,showFilter,setShowFilter,setFilter}) => {
 
-    const [category,setCategory] = useState({
-        "national":true,
-        "world":true,
-        "business":true,
-        "sports":true
-    });
+    
 
     const handleChecked = (e) => {
         setCategory((category) => ({

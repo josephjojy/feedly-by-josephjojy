@@ -5,7 +5,7 @@ import { Search, Notification, Filter} from '@bigbinary/neeto-icons'
 import SidePane from './SidePane'
 import Subscribe from './Subscribe'
 
-const Home = ({setFilter}) => {
+const Home = ({category,setCategory,setFilter}) => {
     const [showFilter, setShowFilter] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
@@ -39,7 +39,7 @@ const Home = ({setFilter}) => {
                 }
                 title={<div className="text-gray-500">Feed.ly</div>}
                 />
-                <SidePane showFilter={showFilter} setShowFilter={setShowFilter} setFilter={setFilter}/>
+                <SidePane category={category} setCategory={setCategory} showFilter={showFilter} setShowFilter={setShowFilter} setFilter={setFilter}/>
                 <Subscribe showModal={showModal} setShowModal={setShowModal}/>
                
         </div>
