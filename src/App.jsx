@@ -18,12 +18,14 @@ function App() {
 
   useEffect(() => {
     const getFeed = (category) =>{
+        let count = 0;
         let data = {};
         category.forEach(async (item)=>{
             const res = await feed(item.toLowerCase())
             data[res.category] = await res.data;
             setNewsFeed(data)
-            if(Object.keys(data).length === categories.length)
+            count++;
+            if(count === categories.length)
                 setLoading(false)
         })
     }

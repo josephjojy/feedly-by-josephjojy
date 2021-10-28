@@ -2,10 +2,16 @@ import { Pane,Button,Typography,Checkbox } from "@bigbinary/neetoui/v2";
 import {React,useState} from 'react'
 import {Check} from '@bigbinary/neeto-icons'
 import { categories } from "../../constants";
+import { Link } from "react-router-dom";
 
 const SidePane = ({showFilter,setShowFilter,setFilter}) => {
 
-    const [category,setCategory] = useState({});
+    const [category,setCategory] = useState({
+        "national":true,
+        "world":true,
+        "business":true,
+        "sports":true
+    });
 
     const handleChecked = (e) => {
         setCategory((category) => ({
@@ -17,6 +23,8 @@ const SidePane = ({showFilter,setShowFilter,setFilter}) => {
         let selectedCategories = Object.keys(category).filter((key)=>category[key]==true);
         setFilter(selectedCategories);
     }
+
+
 
   return (
     <div className="w-full">
@@ -42,12 +50,13 @@ const SidePane = ({showFilter,setShowFilter,setFilter}) => {
           </div>
         </Pane.Body>
         <Pane.Footer className="flex items-center space-x-2">
-          <Button
-            icon={Check}
-            size="large"
-            label="Save Changes"
-            onClick={() => {setShowFilter(false);handleSave()}}
-          />
+            <Link to ={{pathname: "/"}}>
+                <Button
+                icon={Check}
+                size="large"
+                label="Save Changes"
+                onClick={() => {setShowFilter(false);handleSave()}}/>
+            </Link>
           <Button
             style="text"
             size="large"
