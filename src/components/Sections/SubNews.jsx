@@ -10,7 +10,7 @@ const SubNews = ({data,category}) =>{
     }
 
     return(
-        <div className="grid grid-cols-2 gap-x-36 border-b-2 pb-6">
+        <div className="grid grid-cols-2 gap-x-36 border-b-2 pb-6 border-t-2">
             {[1,2,3,4].map((item)=>(
                 <div key = {item} className="flex pt-4">
                 <img src = {data[item].imageUrl} className="h-20 w-20 mr-2" alt="news"/>
