@@ -1,7 +1,13 @@
 import React from "react"
 import {Typography,Button} from "@bigbinary/neetoui/v2"
 
-const MainNews = ({data}) =>{
+const MainNews = ({data,category}) =>{
+
+    const findUrl = (url) =>{
+        const urlArray = url.split('/');
+        const slug = urlArray.at(-1);
+        return (`/${category}/${slug}`)
+    }
     return(
         <div className="py-5 flex flex-row justify-center border-b">
             <img src={data.imageUrl} className="h-72 w-1/2" alt="news"/>
@@ -13,7 +19,7 @@ const MainNews = ({data}) =>{
                 <div className="mt-4 leading-5">{data.content.substring(0, 300).concat('...')}</div>
                 <Button
                     label="Read More"
-                    onClick={function noRefCheck(){}}
+                    href = {findUrl(data.url)}
                     style="link"
                 />
             </div>

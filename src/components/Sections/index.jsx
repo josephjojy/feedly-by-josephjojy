@@ -12,14 +12,14 @@ const Sections = ({filter,newsFeed}) => {
     else
         reqCategories = categories;
     return(
-        <div className="my-20 mx-50 h-full flex flex-col justify-center items-center">
+        <div className="my-20 mx-48 h-full flex flex-col justify-center items-center">
             {
                 reqCategories.map((category,index)=>{
                     return newsFeed[category.toLowerCase()]&&(
                         <div key={index} className="max-w-7xl mt-10 flex flex-col justify-start items-start">
                             <Typography style="h1">{category} News</Typography>
-                            <MainNews data={newsFeed[category.toLowerCase()][0]}/>
-                            <SubNews data = {newsFeed[category.toLowerCase()]}/>
+                            <MainNews data={newsFeed[category.toLowerCase()][0]} category={category}/>
+                            <SubNews data = {newsFeed[category.toLowerCase()]} category={category}/>
                         </div>
                     );
                 })
