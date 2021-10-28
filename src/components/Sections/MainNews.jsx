@@ -1,5 +1,6 @@
 import React from "react"
-import {Typography,Button} from "@bigbinary/neetoui/v2"
+import {Typography} from "@bigbinary/neetoui/v2"
+import { Link } from "react-router-dom"
 
 const MainNews = ({data,category}) =>{
 
@@ -18,11 +19,10 @@ const MainNews = ({data,category}) =>{
                     <Typography style="body2">{`${data.author} at ${data.time} on ${data.date}`}</Typography>
                 </div>
                 <div className="mt-4 leading-5">{data.content.substring(0, 300).concat('...')}</div>
-                <Button
-                    label="Read More"
-                    href = {findUrl(data.url)}
-                    style="link"
-                />
+                <Link className="text-purple-800"
+                    to ={{pathname: findUrl(data.url)}}>
+                  Read more
+                </Link>
             </div>
         </div>
     )

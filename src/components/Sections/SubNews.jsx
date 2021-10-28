@@ -1,5 +1,6 @@
 import React from "react"
-import {Button,Typography} from "@bigbinary/neetoui/v2"
+import {Typography} from "@bigbinary/neetoui/v2"
+import { Link } from "react-router-dom"
 
 const SubNews = ({data,category}) =>{
 
@@ -17,11 +18,10 @@ const SubNews = ({data,category}) =>{
                 <div className="flex-col">
                     <Typography style="h6">{data[item].title}</Typography>
                     <Typography style="body2" className="py-2 neeto-ui-text-gray-500 ">{`${data[item].author} at ${data[item].time} on ${data[item].date}`}</Typography>
-                    <Button
-                    label="Read More"
-                    href = {findUrl(data[item].url)}
-                    style="link"
-                    />
+                    <Link className="text-purple-800"
+                        to ={{pathname: findUrl(data[item].url)}}>
+                        Read more
+                    </Link>
                 </div>    
                 </div>
             ))}
