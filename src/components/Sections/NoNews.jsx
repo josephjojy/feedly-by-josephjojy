@@ -1,10 +1,12 @@
-import React from "react";
+import {React,useState} from "react";
 import NoNewsImg from "../../resourses/Nonews.png"
 import { Button,Typography } from "@bigbinary/neetoui/v2";
 import { Edit } from "@bigbinary/neeto-icons";
+import WriteToUs from "./WriteToUs";
 
 
 const NoNews = () => {
+    const [showModal, setShowModal] = useState(false);
 
     return(
         <div>
@@ -14,12 +16,13 @@ const NoNews = () => {
                 <Button
                     iconPosition="left"
                     label="Write to us"
-                    onClick={function noRefCheck(){}}
+                    onClick={() => setShowModal(true)}
                     style="secondary"
                     icon = {Edit}
                     size="large"
                 />
             </div>
+            <WriteToUs showModal={showModal} setShowModal={setShowModal}/>
         </div>
     )
 }
