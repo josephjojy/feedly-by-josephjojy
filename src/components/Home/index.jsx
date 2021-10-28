@@ -3,34 +3,11 @@ import {Header} from '@bigbinary/neetoui/v2/layouts'
 import {Button, Tooltip} from '@bigbinary/neetoui/v2'
 import { Search, Notification, Filter} from '@bigbinary/neeto-icons'
 import SidePane from './SidePane'
-import Sections from '../Sections'
 import Subscribe from './Subscribe'
-import { feed } from '../../apis/inshort'
-import { categories } from '../../constants'
 
-const Home = () => {
+const Home = ({setFilter}) => {
     const [showFilter, setShowFilter] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [newsFeed, setNewsFeed] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [filter, setFilter] = useState([]);
-
-    useEffect(() => {
-        const getFeed = (category) =>{
-            let data = {};
-            category.forEach(async (item)=>{
-                const res = await feed(item.toLowerCase())
-                data[res.category] = await res.data;
-                setNewsFeed(data)
-                if(Object.keys(data).length === categories.length)
-                    setLoading(false)
-            })
-        }
-        getFeed(categories)
-    }, [])
-
-
-    if(loading) return <h1>Loading</h1>
 
     return (
         <div className="mx-5" >
@@ -64,7 +41,7 @@ const Home = () => {
                 />
                 <SidePane showFilter={showFilter} setShowFilter={setShowFilter} setFilter={setFilter}/>
                 <Subscribe showModal={showModal} setShowModal={setShowModal}/>
-                <Sections filter={filter} newsFeed={newsFeed}/>
+               
         </div>
     )
 }
