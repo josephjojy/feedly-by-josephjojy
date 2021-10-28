@@ -3,14 +3,16 @@ import Home from './components/Home'
 import Article from './components/Article';
 import {React,useState,useEffect} from 'react';
 import { feed } from './apis/inshort'
-import { categories } from './constants'
+import { categories,initialCategories } from './constants'
 import Sections from './components/Sections';
+import { PageLoader } from "@bigbinary/neetoui/v2";
+
 
 
 function App() {
   const [newsFeed, setNewsFeed] = useState({});
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState([]);
+  const [filter, setFilter] = useState(initialCategories);
 
 
 
@@ -29,8 +31,12 @@ function App() {
 }, [])
 
 
-if(loading) return <h1>Loading</h1>
-
+if(loading) 
+  return (
+          <div className="absolute top-0 left-0 flex flex-col justify-center items-center w-full h-full">
+            <PageLoader />
+          </div>
+          )
   return (
     <div className="App">
       <BrowserRouter>

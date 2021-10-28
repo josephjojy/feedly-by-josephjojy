@@ -6,13 +6,13 @@ import SubNews from "../Sections/SubNews";
 
 const Article = ({newsFeed}) => {
     const {category,slug} = useParams();
-    
+
     const findArticle = () => {
-        return newsFeed[category.toLowerCase()]?.find((news) => news.url.includes(slug))
+        return newsFeed[category]?.find((news) => news.url.includes(slug))
     }
 
     const article = findArticle();
-    let copyNews = newsFeed[category.toLowerCase()].filter((item)=>item.url !=article.url);
+    let copyNews = newsFeed[category]?.filter((item)=>item.url !=article.url);
     return(
         <div>
             <div className="my-20 mx-60 h-full flex flex-col justify-center items-center">

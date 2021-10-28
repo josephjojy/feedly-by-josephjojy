@@ -8,6 +8,7 @@ const MainNews = ({data,category}) =>{
         const slug = urlArray.at(-1);
         return (`/${category}/${slug}`)
     }
+
     return(
         <div className="py-5 flex flex-row justify-center border-b">
             <img src={data.imageUrl} className="h-72 w-1/2" alt="news"/>

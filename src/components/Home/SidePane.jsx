@@ -31,14 +31,14 @@ const SidePane = ({showFilter,setShowFilter,setFilter}) => {
             Category
           </Typography>
           <div>
-              {categories.map(items=>(
-                  <Checkbox className="ml-3 mt-8"
-                  id={items}
+              {categories.map(items=>{
+                  return <Checkbox className="ml-3 mt-8"
+                  id={items.toLowerCase()}
                   label={items}
-                  checked={category[items]||false}
+                  checked={category[items.toLowerCase()]||false}
                   onChange={handleChecked}
                 />
-              ))}
+                })}
           </div>
         </Pane.Body>
         <Pane.Footer className="flex items-center space-x-2">
