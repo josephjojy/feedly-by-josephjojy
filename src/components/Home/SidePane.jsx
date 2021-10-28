@@ -1,9 +1,23 @@
 import { Pane,Button,Typography,Checkbox } from "@bigbinary/neetoui/v2";
-import {React} from 'react'
+import {React,useState} from 'react'
 import {Check} from '@bigbinary/neeto-icons'
 import { categories } from "../../constants";
 
-const SidePane = ({showFilter,setShowFilter}) => {
+const SidePane = ({showFilter,setShowFilter,setFilter}) => {
+
+    const [category,setCategory] = useState({});
+
+    const handleChecked = (e) => {
+        setCategory((category) => ({
+          ...category,
+          [e.target.id]: e.target.checked
+        }));
+      };
+    const handleSave = () => {
+        let selectedCategories = Object.keys(category).filter((key)=>category[key]==true);
+        setFilter(selectedCategories);
+    }
+
   return (
     <div className="w-full">
       <Pane isOpen={showFilter} onClose={() => setShowFilter(false)}>
@@ -21,6 +35,8 @@ const SidePane = ({showFilter,setShowFilter}) => {
                   <Checkbox className="ml-3 mt-8"
                   id={items}
                   label={items}
+                  checked={category[items]||false}
+                  onChange={handleChecked}
                 />
               ))}
           </div>
@@ -30,7 +46,7 @@ const SidePane = ({showFilter,setShowFilter}) => {
             icon={Check}
             size="large"
             label="Save Changes"
-            onClick={() => setShowFilter(false)}
+            onClick={() => {setShowFilter(false);handleSave()}}
           />
           <Button
             style="text"

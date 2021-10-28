@@ -10,7 +10,7 @@ const Subscribe = ({showModal,setShowModal}) => {
         <Modal isOpen={showModal} size="xs" closeButton={false}>
 
           <Modal.Body className="mt-8">
-            <img src={subscribe} alt="subscribe image"/>
+            <img src={subscribe} alt="subscribe"/>
             <Typography style="h2" className="mt-4">Subscribe to Feed.ly</Typography>
             <Typography style="body2" lineHeight="normal">
             We don't spam, but, we deliver the latest news in short.
