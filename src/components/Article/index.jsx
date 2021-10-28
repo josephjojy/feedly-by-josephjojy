@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import {Typography ,Button, Tooltip} from "@bigbinary/neetoui/v2"
 import {Copy} from "@bigbinary/neeto-icons"
 import SubNews from "../Sections/SubNews";
+import ErrorPage from "../ErrorPage";
 
 const Article = ({newsFeed}) => {
     const {category,slug} = useParams();
@@ -12,6 +13,8 @@ const Article = ({newsFeed}) => {
     }
 
     const article = findArticle();
+    if(article){
+
     let copyNews = newsFeed[category]?.filter((item)=>item.url !=article.url);
     return(
         <div>
@@ -41,6 +44,10 @@ const Article = ({newsFeed}) => {
             </div>
         </div>
     )
+    }
+    else{
+        return <ErrorPage />
+    }
 }
 
 export default Article
