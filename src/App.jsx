@@ -50,7 +50,7 @@ if(loading)
   return (
     <div className="App">
       <BrowserRouter>
-      <Home category={category} setCategory={setCategory} setFilter={setFilter}/> 
+      <Home newsFeed={newsFeed} filter={filter} category={category} setCategory={setCategory} setFilter={setFilter}/> 
       <ToastContainer />
         <Switch>
         <Route path='/:category/:slug'>

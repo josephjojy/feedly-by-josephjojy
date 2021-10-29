@@ -4,13 +4,14 @@ import {Button, Tooltip} from '@bigbinary/neetoui/v2'
 import { Search, Notification, Filter} from '@bigbinary/neeto-icons'
 import SidePane from './SidePane'
 import Subscribe from './Subscribe'
+import NewsSearch from './NewsSearch'
+import { Link } from "react-router-dom"
 
-import { ToastContainer } from "react-toastify";
-import { Toastr } from "@bigbinary/neetoui/v2";
 
-const Home = ({category,setCategory,setFilter}) => {
+const Home = ({newsFeed,filter,category,setCategory,setFilter}) => {
     const [showFilter, setShowFilter] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [showSearch, setShowSearch] = useState(false);
 
     return (
         <div className="mx-5" >
@@ -22,6 +23,7 @@ const Home = ({category,setCategory,setFilter}) => {
                     ><Button 
                         icon ={() =>{return <Search/>}}
                         style = "icon"
+                        onClick={() => setShowSearch(!showSearch)}
                     /></Tooltip>
                     <Tooltip
                         content="Subscribe"
@@ -40,10 +42,11 @@ const Home = ({category,setCategory,setFilter}) => {
                     />
                 </>
                 }
-                title={<div className="text-gray-500">Feed.ly</div>}
+                title={<Link to ={{pathname: "/"}}><div className="text-gray-500">Feed.ly</div></Link>}
                 />
                 <SidePane category={category} setCategory={setCategory} showFilter={showFilter} setShowFilter={setShowFilter} setFilter={setFilter}/>
                 <Subscribe showModal={showModal} setShowModal={setShowModal}/>
+                <NewsSearch newsFeed={newsFeed} filter={filter} showSearch={showSearch} setShowSearch={setShowSearch}/>
                
         </div>
     )
