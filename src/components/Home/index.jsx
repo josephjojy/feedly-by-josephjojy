@@ -5,8 +5,10 @@ import { Search, Notification, Filter} from '@bigbinary/neeto-icons'
 import SidePane from './SidePane'
 import Subscribe from './Subscribe'
 import NewsSearch from './NewsSearch'
+import { Link } from "react-router-dom"
 
-const Home = ({category,setCategory,setFilter}) => {
+
+const Home = ({newsFeed,filter,category,setCategory,setFilter}) => {
     const [showFilter, setShowFilter] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
@@ -40,11 +42,11 @@ const Home = ({category,setCategory,setFilter}) => {
                     />
                 </>
                 }
-                title={<div className="text-gray-500">Feed.ly</div>}
+                title={<Link to ={{pathname: "/"}}><div className="text-gray-500">Feed.ly</div></Link>}
                 />
                 <SidePane category={category} setCategory={setCategory} showFilter={showFilter} setShowFilter={setShowFilter} setFilter={setFilter}/>
                 <Subscribe showModal={showModal} setShowModal={setShowModal}/>
-                <NewsSearch showSearch={showSearch} setShowSearch={setShowSearch}/>
+                <NewsSearch newsFeed={newsFeed} filter={filter} showSearch={showSearch} setShowSearch={setShowSearch}/>
                
         </div>
     )
