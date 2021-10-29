@@ -11,8 +11,9 @@ const Sections = ({category,setCategory,setFilter,filter,newsFeed}) => {
     if(filter.length){
         reqCategories = filter;
         return(
-        <div className="my-10 mx-48 h-full flex flex-col justify-center items-center">
+        <div className="my-10 mx-48 h-full">
             <FilterLabel setCategory={setCategory} setFilter={setFilter} filter={filter}/>
+            <div className="flex flex-col justify-center items-center">
             {
                 reqCategories.map((category,index)=>{
                     const capitalizeTitle = category[0].toUpperCase()+category.slice(1)
@@ -25,6 +26,7 @@ const Sections = ({category,setCategory,setFilter,filter,newsFeed}) => {
                     );
                 })
             }
+            </div>
         </div>
         ) 
     }

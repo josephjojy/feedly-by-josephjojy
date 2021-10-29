@@ -4,6 +4,10 @@ import {Typography ,Button, Tooltip} from "@bigbinary/neetoui/v2"
 import {Copy} from "@bigbinary/neeto-icons"
 import SubNews from "../Sections/SubNews";
 import ErrorPage from "../ErrorPage";
+import { Toastr } from "@bigbinary/neetoui/v2";
+
+
+
 
 const Article = ({newsFeed}) => {
     const {category,slug} = useParams();
@@ -22,9 +26,9 @@ const Article = ({newsFeed}) => {
                 <div className="flex flex-col justify-center items-start">                
                     <Typography style="h1">{article.title}  <Tooltip content="Copy" placement="bottom">
                         <Button className="ml-1" icon = {() =>{return <Copy/>}} style="icon"
-                            onClick={() => {navigator.clipboard.writeText(article.readMoreUrl)}}
+                            onClick={() => {navigator.clipboard.writeText(article.readMoreUrl);Toastr.info("Copied to clipboard.")}}
                         />
-                        </Tooltip>
+                        </Tooltip> 
                     </Typography>
                     <div className="w-full mt-4 flex flex-row justify-start neeto-ui-text-gray-500">
                         <Typography style="body2">{`${article.author} at ${article.time} on ${article.date}`}</Typography>

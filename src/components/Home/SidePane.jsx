@@ -1,12 +1,10 @@
 import { Pane,Button,Typography,Checkbox } from "@bigbinary/neetoui/v2";
-import {React,useState,useEffect} from 'react'
+import {React} from 'react'
 import {Check} from '@bigbinary/neeto-icons'
 import { categories } from "../../constants";
 import { Link } from "react-router-dom";
 
 const SidePane = ({category,setCategory,showFilter,setShowFilter,setFilter}) => {
-
-    
 
     const handleChecked = (e) => {
         setCategory((category) => ({
@@ -17,9 +15,7 @@ const SidePane = ({category,setCategory,showFilter,setShowFilter,setFilter}) => 
     const handleSave = () => {
         let selectedCategories = Object.keys(category).filter((key)=>category[key]==true);
         setFilter(selectedCategories);
-    }
-
-
+        }
 
   return (
     <div className="w-full">

@@ -7,8 +7,7 @@ import { categories,initialCategories } from './constants'
 import Sections from './components/Sections';
 import { PageLoader } from "@bigbinary/neetoui/v2";
 import ErrorPage from './components/ErrorPage';
-
-
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [newsFeed, setNewsFeed] = useState({});
@@ -20,8 +19,6 @@ function App() {
     "business":true,
     "sports":true
 });
-
-
 
   useEffect(() => {
     const getFeed = (category) =>{
@@ -46,24 +43,23 @@ function App() {
 
 if(loading) 
   return (
-          <div className="absolute top-0 left-0 flex flex-col justify-center items-center w-full h-full">
-            <PageLoader />
-          </div>
-          )
+    <div className="absolute top-0 left-0 flex flex-col justify-center items-center w-full h-full">
+      <PageLoader />
+    </div>
+  )
   return (
     <div className="App">
       <BrowserRouter>
+      <Home category={category} setCategory={setCategory} setFilter={setFilter}/> 
+      <ToastContainer />
         <Switch>
         <Route path='/:category/:slug'>
-            <Home category={category} setCategory={setCategory} setFilter={setFilter}/>
             <Article newsFeed={newsFeed}/>
           </Route>
           <Route path='/:slug'>
-            <Home category={category} setCategory={setCategory} setFilter={setFilter}/>
             <ErrorPage />
           </Route>
           <Route path='/'>
-            <Home category={category} setCategory={setCategory} setFilter={setFilter}/>
             <Sections category={category} setCategory={setCategory} setFilter={setFilter} filter={filter} newsFeed={newsFeed}/>
           </Route>
         </Switch>
