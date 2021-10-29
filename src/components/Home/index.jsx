@@ -1,9 +1,12 @@
-import {React,useState,useEffect} from 'react'
+import {React,useState} from 'react'
 import {Header} from '@bigbinary/neetoui/v2/layouts'
 import {Button, Tooltip} from '@bigbinary/neetoui/v2'
 import { Search, Notification, Filter} from '@bigbinary/neeto-icons'
 import SidePane from './SidePane'
 import Subscribe from './Subscribe'
+
+import { ToastContainer } from "react-toastify";
+import { Toastr } from "@bigbinary/neetoui/v2";
 
 const Home = ({category,setCategory,setFilter}) => {
     const [showFilter, setShowFilter] = useState(false);

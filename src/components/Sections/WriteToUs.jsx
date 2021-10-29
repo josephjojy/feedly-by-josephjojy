@@ -2,6 +2,7 @@ import {React,useState} from "react";
 import {Button, Modal, Typography, Input, Textarea} from '@bigbinary/neetoui/v2'
 import axios from "axios";
 import { WebHookURL } from "../../constants";
+import { Toastr } from "@bigbinary/neetoui/v2";
 
 const WriteToUs = ({showModal,setShowModal}) =>{
 
@@ -17,6 +18,7 @@ const WriteToUs = ({showModal,setShowModal}) =>{
     const handleSubmit = async() =>{
             const response = await axios.post(WebHookURL,{userMsg})
             setUserMeg()
+            Toastr.success("Thank you, You Message has been sent")
     }
 
     return(

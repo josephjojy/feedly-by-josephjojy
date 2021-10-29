@@ -3,6 +3,7 @@ import {Button, Modal, Typography, Input} from '@bigbinary/neetoui/v2'
 import subscribe from '../../resourses/subscribe.png'
 import axios from "axios";
 import { WebHookURL } from "../../constants";
+import { Toastr } from "@bigbinary/neetoui/v2";
 
 
 const Subscribe = ({showModal,setShowModal}) => {
@@ -19,9 +20,9 @@ const Subscribe = ({showModal,setShowModal}) => {
     const handleSubmit = async() =>{
         const response = await axios.post(WebHookURL,{userEmail})
         setUserEmail()
+        Toastr.success("Subscribed to Feed.ly")
     }
 
-  
     return (
       <div className="w-full">
         <Modal isOpen={showModal} size="xs" closeButton={false}>

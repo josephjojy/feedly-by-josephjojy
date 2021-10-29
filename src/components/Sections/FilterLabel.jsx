@@ -14,7 +14,7 @@ const FilterLabel = ({setCategory,setFilter,filter}) => {
     }
 
     return(
-        <div>
+        <div className="">
             {
                 filter.map((item)=>{
                     const capitalizeTitle = item[0].toUpperCase()+item.slice(1)
