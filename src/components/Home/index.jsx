@@ -4,13 +4,12 @@ import {Button, Tooltip} from '@bigbinary/neetoui/v2'
 import { Search, Notification, Filter} from '@bigbinary/neeto-icons'
 import SidePane from './SidePane'
 import Subscribe from './Subscribe'
-
-import { ToastContainer } from "react-toastify";
-import { Toastr } from "@bigbinary/neetoui/v2";
+import NewsSearch from './NewsSearch'
 
 const Home = ({category,setCategory,setFilter}) => {
     const [showFilter, setShowFilter] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [showSearch, setShowSearch] = useState(false);
 
     return (
         <div className="mx-5" >
@@ -22,6 +21,7 @@ const Home = ({category,setCategory,setFilter}) => {
                     ><Button 
                         icon ={() =>{return <Search/>}}
                         style = "icon"
+                        onClick={() => setShowSearch(!showSearch)}
                     /></Tooltip>
                     <Tooltip
                         content="Subscribe"
@@ -44,6 +44,7 @@ const Home = ({category,setCategory,setFilter}) => {
                 />
                 <SidePane category={category} setCategory={setCategory} showFilter={showFilter} setShowFilter={setShowFilter} setFilter={setFilter}/>
                 <Subscribe showModal={showModal} setShowModal={setShowModal}/>
+                <NewsSearch showSearch={showSearch} setShowSearch={setShowSearch}/>
                
         </div>
     )
