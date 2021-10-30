@@ -10,8 +10,9 @@ const MainNews = ({data,category}) =>{
         return (`/${category}/${slug}`)
     }
 
+    if(!data)return <div className=" w-full" ><Typography >No News in this section</Typography></div>
     return(
-        <div className="py-5 flex flex-row justify-center border-b">
+        <div className="py-5 flex flex-row justify-center">
             <img src={data.imageUrl} className="h-72 w-1/2" alt="news"/>
             <div className="w-1/2 ml-5 flex flex-col justify-start items-start">
                 <Typography style="h3" className="leading-8 tracking-wide">{data.title}</Typography>

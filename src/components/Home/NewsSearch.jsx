@@ -44,7 +44,7 @@ const NewsSearch = ({newsFeed,filter,showSearch,setShowSearch}) => {
                                 }).map((ele)=>{return (
                                             <div className="m-2 p-2 bg-gray-100 rounded-sm border-b-2 flex justify-between items-center" onClick={()=>{setShowSearch(false);setSearchData()}}>
                                                 <div className="flex">
-                                                <img src={ele.imageUrl} className="h-12 w-12"/>
+                                                <img src={ele.imageUrl} className="h-12 w-12" alt="news"/>
                                                 <Link
                                                     className = "p-3 font-bold"
                                                     to ={{pathname: findUrl(ele.url,ele.category)}}>

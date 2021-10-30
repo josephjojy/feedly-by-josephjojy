@@ -19,7 +19,7 @@ const Article = ({newsFeed}) => {
     const article = findArticle();
     if(article){
 
-    let copyNews = newsFeed[category]?.filter((item)=>item.url !=article.url);
+    let copyNews = newsFeed[category]?.filter((item)=>item.url !==article.url);
     return(
         <div>
             <div className="my-20 mx-60 h-full flex flex-col justify-center items-center">

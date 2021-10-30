@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const ErrorPage = () =>{
     return(
         <div className="absolute top-0 left-0 flex flex-col justify-center items-center w-full h-full">
-            <img src={ErrorImg} className="pb-4"/>
+            <img src={ErrorImg} className="pb-4" alt="error"/>
             <Typography style="h3" className="max-w-xs  text-center">You have landed somewhere unknown.</Typography>
             <Link to={{ pathname: "/" }}>
                 <Button
