@@ -5,7 +5,7 @@ import { Tag } from "@bigbinary/neetoui/v2";
 const FilterLabel = ({setCategory,setFilter,filter}) => {
 
     const removeFilter = (item) =>{
-        const filtered = filter.filter((ele)=>ele!=item);
+        const filtered = filter.filter((ele)=>ele!==item);
         setFilter(filtered);
         setCategory((category) => ({
             ...category,

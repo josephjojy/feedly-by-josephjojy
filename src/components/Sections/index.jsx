@@ -1,12 +1,29 @@
-import {React} from "react";
+import {React, useContext, useState,useEffect} from "react";
 import {Typography} from "@bigbinary/neetoui/v2"
 import MainNews from "./MainNews";
 import SubNews from "./SubNews";
 import NoNews from "./NoNews";
 import FilterLabel from "./FilterLabel";
+import { ArchiveContext } from "../../App";
 
 const Sections = ({category,setCategory,setFilter,filter,newsFeed}) => {
+
+    const [filteredNews,setFilteredNews] = useState(newsFeed); 
     let reqCategories = [];
+    let news = {};
+    const {archive} = useContext(ArchiveContext);
+
+    useEffect(() => {
+       const today = new Date().toDateString();
+       filter.forEach((item)=>{
+        news[item]=newsFeed[item].filter((ele)=>{
+            if(!archive){
+            let newsDate = new Date(ele?.date.slice(0,11)).toDateString();
+            return today===newsDate?true:false;}
+            return true
+       })})
+   setFilteredNews(news);
+    }, [archive,filter])
 
     if(filter.length){
         reqCategories = filter;
@@ -17,11 +34,11 @@ const Sections = ({category,setCategory,setFilter,filter,newsFeed}) => {
             {
                 reqCategories.map((category,index)=>{
                     const capitalizeTitle = category[0].toUpperCase()+category.slice(1)
-                    return newsFeed[category]&&(
-                        <div key={index} className="max-w-7xl mt-10 flex flex-col justify-start items-start">
+                    return filteredNews[category]&&(
+                        <div key={index} className="w-full border-b-2 mt-10 flex flex-col justify-start items-start">
                             <Typography style="h1">{capitalizeTitle} News</Typography>
-                            <MainNews data={newsFeed[category][0]} category={category}/>
-                            <SubNews data = {newsFeed[category]} category={category}/>
+                            <MainNews data={filteredNews[category][0]} category={category}/>
+                            <SubNews data = {filteredNews[category]} category={category}/>
                         </div>
                     );
                 })

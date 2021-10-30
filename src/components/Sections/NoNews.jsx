@@ -11,7 +11,7 @@ const NoNews = () => {
     return(
         <div>
             <div className="mt-12 pb-20 flex flex-col items-center">
-                <img src={NoNewsImg}/>
+                <img src={NoNewsImg} alt="no News"/>
                 <Typography style="h3" className="py-4">No News Articles Found</Typography>
                 <Button
                     iconPosition="left"

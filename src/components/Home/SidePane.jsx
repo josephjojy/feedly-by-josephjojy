@@ -1,10 +1,14 @@
 import { Pane,Button,Typography,Checkbox } from "@bigbinary/neetoui/v2";
-import {React} from 'react'
+import {React, useContext} from 'react'
 import {Check} from '@bigbinary/neeto-icons'
 import { categories } from "../../constants";
 import { Link } from "react-router-dom";
+import { ArchiveContext } from "../../App";
 
 const SidePane = ({category,setCategory,showFilter,setShowFilter,setFilter}) => {
+
+    const {archive,setArchive} = useContext(ArchiveContext);
+
 
     const handleChecked = (e) => {
         setCategory((category) => ({
@@ -13,7 +17,7 @@ const SidePane = ({category,setCategory,showFilter,setShowFilter,setFilter}) => 
         }));
       };
     const handleSave = () => {
-        let selectedCategories = Object.keys(category).filter((key)=>category[key]==true);
+        let selectedCategories = Object.keys(category).filter((key)=>category[key]===true);
         setFilter(selectedCategories);
         }
 
@@ -29,9 +33,10 @@ const SidePane = ({category,setCategory,showFilter,setShowFilter,setFilter}) => 
           <Typography style="h4">
             Category
           </Typography>
-          <div>
+          <div className="w-full pb-8 border-b-2" > 
               {categories.map(items=>{
                   return <Checkbox className="ml-3 mt-8"
+                  key = {items}
                   id={items.toLowerCase()}
                   label={items}
                   checked={category[items.toLowerCase()]||false}
@@ -39,6 +44,12 @@ const SidePane = ({category,setCategory,showFilter,setShowFilter,setFilter}) => 
                 />
                 })}
           </div>
+          <Checkbox className="ml-3 mt-8"
+                  id="archive"
+                  label="Include archived articles"
+                  checked = {archive}
+                  onChange={()=>setArchive(!archive)}
+                />
         </Pane.Body>
         <Pane.Footer className="flex items-center space-x-2">
             <Link to ={{pathname: "/"}}>
