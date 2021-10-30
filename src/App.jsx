@@ -53,14 +53,14 @@ if(loading)
       <Home newsFeed={newsFeed} filter={filter} category={category} setCategory={setCategory} setFilter={setFilter}/> 
       <ToastContainer />
         <Switch>
-        <Route path='/:category/:slug'>
+        <Route exact path='/:category/:slug'>
             <Article newsFeed={newsFeed}/>
           </Route>
-          <Route path='/:slug'>
-            <ErrorPage />
-          </Route>
-          <Route path='/'>
+          <Route exact path='/'>
             <Sections category={category} setCategory={setCategory} setFilter={setFilter} filter={filter} newsFeed={newsFeed}/>
+          </Route>
+          <Route>
+            <ErrorPage />
           </Route>
         </Switch>
       </BrowserRouter>
