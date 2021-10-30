@@ -1,8 +1,9 @@
-import {React,useState} from "react";
+import {React,useCallback,useState} from "react";
 import ReactDOM from 'react-dom';
 import { Input,Button,Tag } from "@bigbinary/neetoui/v2";
 import {Search,Close} from "@bigbinary/neeto-icons"
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import debounce from "lodash/debounce"
 
 
 const NewsSearch = ({newsFeed,filter,showSearch,setShowSearch}) => {
@@ -15,6 +16,8 @@ const NewsSearch = ({newsFeed,filter,showSearch,setShowSearch}) => {
         return (`/${category}/${slug}`)
     }
 
+    const searchDebounce = useCallback(debounce(value=>setSearchData(value),500),[])
+
     if(!showSearch) return null
 
     return ReactDOM.createPortal(
@@ -23,7 +26,7 @@ const NewsSearch = ({newsFeed,filter,showSearch,setShowSearch}) => {
             <div className="fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-70" onClick={()=>{setShowSearch(false);setSearchData()}} ></div>
             <div className="w-full fixed top-1/3">
             <div className="flex flex-col items-center w-full">
-                <Input className = "w-1/3" prefix={<Search size={16} />} placeholder="Search for an article"  suffix={<Button style="text" icon={Close} onClick={()=>{setShowSearch(false);setSearchData()}}/>} onChange = {(e)=> setSearchData(e.target.value)}/>
+                <Input className = "w-1/3" prefix={<Search size={16} />} placeholder="Search for an article"  suffix={<Button style="text" icon={Close} onClick={()=>{setShowSearch(false);setSearchData()}}/>} onChange = {(e)=> searchDebounce(e.target.value)}/>
                 {
                     searchData && (
                         <div className="mt-2 max-h-72 overflow-y-auto w-1/3 bg-white rounded-sm border-b-2">
