@@ -8,6 +8,7 @@ import Sections from './components/Sections';
 import { PageLoader } from "@bigbinary/neetoui/v2";
 import ErrorPage from './components/ErrorPage';
 import { ToastContainer } from "react-toastify";
+import ErrorBoundary from './components/ErrorBoundary';
 
 export const ArchiveContext = createContext();
 
@@ -54,6 +55,7 @@ if(loading)
     <div className="App">
       <BrowserRouter>
       <ArchiveContext.Provider value={{archive,setArchive}}>
+      <ErrorBoundary> 
       <Home newsFeed={newsFeed} filter={filter} category={category} setCategory={setCategory} setFilter={setFilter}/> 
       <ToastContainer />
         <Switch>
@@ -67,6 +69,7 @@ if(loading)
             <ErrorPage />
           </Route>
         </Switch>
+        </ErrorBoundary>
         </ArchiveContext.Provider>
       </BrowserRouter>
     </div>
