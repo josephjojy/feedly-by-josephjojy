@@ -1,7 +1,6 @@
 ## News Feed - Dashboard Challenge- v2
 
 A News Feeds Dashboard build using the unofficial InShorts API. 
-([Notion Link to the same](https://mazahir.notion.site/Feedly-e36088d68bb74ea8b4be77c014fc0f7b))
 
 **InShorts** , Inshorts is an Indian startup that features a software application based products that send out news stories in 60-word bites for busy and uninspired readers.
 
